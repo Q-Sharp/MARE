@@ -48,19 +48,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GFX.cs" />
+    <Compile Include="GFXDataSet.cs">
+      <DependentUpon>GFXDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GFXDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GFXDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MareForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MareForm.Designer.cs">
       <DependentUpon>MareForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MARE.cs" />
+    <Compile Include="MareRegHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MareForm.resx">
       <DependentUpon>MareForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="GFXDataSet.xsc">
+      <DependentUpon>GFXDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GFXDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GFXDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="GFXDataSet.xss">
+      <DependentUpon>GFXDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\GFX.datasource" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

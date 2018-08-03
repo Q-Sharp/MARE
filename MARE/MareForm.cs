@@ -5,11 +5,12 @@ namespace MARE
 {
     public partial class MareForm : Form
     {
-        public MARE oMare = new MARE();
-
         public MareForm()
         {
             InitializeComponent();
+
+            foreach(DataGridViewColumn c in oDGV.Columns)
+                c.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         private void oExit_Click(object sender, EventArgs e)
@@ -19,14 +20,12 @@ namespace MARE
 
         private void oSave_Click(object sender, EventArgs e)
         {
-            oMare?.SaveReg();
-            oMare?.LoadReg();
+            oGFXDataSet.Save();
         }
 
         private void MareForm_Load(object sender, EventArgs e)
         {
-            oMare?.LoadReg();
-            oDGV.DataSource = new BindingSource(oMare.AllGFX, null);
+            oGFXDataSet.Load();
         }
     }
 }

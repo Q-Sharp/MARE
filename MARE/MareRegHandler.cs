@@ -1,43 +1,19 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Security;
 using System.Windows.Forms;
 
 namespace MARE
 {
-    public class MARE
+    public class MareRegHandler
     {
-        public class GFX : DataGridViewRow
-        {
-            public int No { get; private set; }
-
-            public string Desc { get; set; }
-
-            public int? KMD_EnableInternalLargePage { get; set; }
-
-            public int? EnableCrossFireAutoLink { get; set; }
-
-            public int? EnableUlps { get; set; }
-
-            public GFX(int i, int? nKMD_EnableInternalLargePage, int? nEnableCrossFireAutoLink, int? nEnableUlps, string sDesc)
-            {
-                No = i;
-
-                KMD_EnableInternalLargePage = nKMD_EnableInternalLargePage;
-                EnableCrossFireAutoLink = nEnableCrossFireAutoLink;
-                EnableUlps = nEnableUlps;
-                Desc = sDesc;
-            }
-        }
-
         public BindingList<GFX> AllGFX { get; set; } = new BindingList<GFX>();
-
         private readonly string sMainReg = "SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}";
 
-        public MARE()
+        public MareRegHandler()
         {
-
         }
 
         public void LoadReg()
@@ -73,6 +49,15 @@ namespace MARE
                     continue;
                 }
             }
+        }
+
+        public void Update(int no, string desc, int? kMD_EnableInternalLargePage, int? enableCrossFireAutoLink, int? enableUlps)
+        {
+            var gfx = AllGFX.SingleOrDefault(x => x.No == no);
+
+            gfx.KMD_EnableInternalLargePage = kMD_EnableInternalLargePage;
+            gfx.EnableCrossFireAutoLink = enableCrossFireAutoLink;
+            gfx.EnableUlps = enableUlps;
         }
 
         public void SaveReg()
