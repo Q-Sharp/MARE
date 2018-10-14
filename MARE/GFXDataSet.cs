@@ -1,12 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace MARE
+﻿namespace MARE
 {
     partial class GFXDataSet
     {
-        public MareRegHandler Mare { get; set; } = new MareRegHandler();
-
-
+        public virtual MareRegHandler Mare { get; set; } = new MareRegHandler();
+       
         public void Load()
         {
             Mare?.LoadReg();

@@ -9,7 +9,7 @@ namespace MARE
 {
     public class MareRegHandler
     {
-        public IList<GFX> AllGFX { get; set; } = new BindingList<GFX>();
+        public virtual IList<GFX> AllGFX { get; set; } = new BindingList<GFX>();
         public IRegistry RegistryAccess { get; set; }
         public IMessageBox MessageBox { get; set; }
         private readonly string sMainReg = "SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}";
@@ -56,13 +56,16 @@ namespace MARE
             }
         }
 
-        public void Update(int no, string desc, int? kMD_EnableInternalLargePage, int? enableCrossFireAutoLink, int? enableUlps)
+        public void Update(int No, string Desc, int? KMD_EnableInternalLargePage, int? EnableCrossFireAutoLink, int? EnableUlps)
         {
-            var gfx = AllGFX.SingleOrDefault(x => x.No == no);
+            var gfx = AllGFX.SingleOrDefault(x => x.No == No);
 
-            gfx.KMD_EnableInternalLargePage = kMD_EnableInternalLargePage;
-            gfx.EnableCrossFireAutoLink = enableCrossFireAutoLink;
-            gfx.EnableUlps = enableUlps;
+            if(gfx != null)
+            {
+                gfx.KMD_EnableInternalLargePage = KMD_EnableInternalLargePage;
+                gfx.EnableCrossFireAutoLink = EnableCrossFireAutoLink;
+                gfx.EnableUlps = EnableUlps;
+            }
         }
 
         public void SaveReg()
