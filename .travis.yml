@@ -1,5 +1,6 @@
 language: csharp
 solution: MARE.sln
+sudo: enabled
 install:
   - nuget restore MARE.sln
   - chmod +x ./packages/xunit.runner.console.2.4.1-pre.build.4071/tools/xunit.console.x86.exe
