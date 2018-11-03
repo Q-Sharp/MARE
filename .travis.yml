@@ -1,20 +1,6 @@
 language: csharp
 solution: MARE.sln
 sudo: enabled
-install:
-  - nuget restore MARE.sln
-  - sudo apt-get install gtk-sharp2
-  - curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
-  - unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
-  - cp /tmp/cecil/lib/net40/Mono.Cecil.dll .
-  - cp /tmp/cecil/lib/net40/Mono.Cecil.dll /tmp/cecil/
-  - git clone --depth=50 git://github.com/csMACnz/monocov.git ../../csMACnz/monocov
-  - cd ../../csMACnz/monocov
-  - cp /tmp/cecil/Mono.Cecil.dll .
-  - ./configure
-  - make
-  - sudo make install
-  - cd ../../csMACnz/Coveralls.net-Samples
 script:
   - xbuild /p:Configuration=Release MARE.sln
   - export LD_LIBRARY_PATH=/usr/local/lib
