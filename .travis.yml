@@ -3,7 +3,6 @@ solution: MARE.sln
 sudo: enabled
 install:
   - nuget restore MARE.sln
-  - chmod +x ./packages/xunit.runner.console.2.4.1-pre.build.4071/tools/xunit.console.x86.exe
   - sudo apt-get install gtk-sharp2
   - curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
   - unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
