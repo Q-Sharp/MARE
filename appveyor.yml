@@ -16,5 +16,5 @@ before_build:
 - choco install codecov
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\MARE.Tests\bin\Debug\MARE.Tests.dll -noshadow" -filter:"+[UnitTestTargetProject*]* -[MyUnitTests*]*" -output:".\MARE_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\MARE.Tests\bin\Debug\MARE.Tests.dll -noshadow" -output:".\MARE_coverage.xml"
 - codecov -f "MARE_coverage.xml
